@@ -54,7 +54,7 @@ class Article(models.Model):
 
     # 获得绝对地址的方式
     def get_absolute_url(self):
-        return reverse('article', args=(self.slug, ))
+        return reverse('article', args=(self.pk, self.slug, ))
 
     class Meta:
         verbose_name = '教程'

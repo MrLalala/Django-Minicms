@@ -25,8 +25,12 @@ urlpatterns = [
     url(r'^ueditor/', include(editor_urls)),
     url(r'^$', news_views.index, name='index'),
     # 使用非通用匹配url，就是按文章单独分配url
+    # 使用正则表达式组来进行匹配
     url(r'^column/(?P<column_slug>[^/]+)/$', news_views.column_detail, name='column'),
-    url(r'^news/(?P<article_slug>[^/]+)/$', news_views.article_detail, name='article'),
+    # 第一版url：会出现重复的现象。
+    # url(r'^news/(?P<article_slug>[^/]+)/$', news_views.article_detail, name='article'),
+    # 第二版url：添加主键标志，有效去重
+    url(r'^news/(?P<pk>\d+)/(?P<article_slug>[^/]+)/$', news_views.article_detail, name='article')
 ]
 
 if settings.DEBUG:
