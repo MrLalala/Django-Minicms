@@ -131,5 +131,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 添加静态文件的路径，如js和css等。
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'common_static'),
+	r'C:\Python27\Lib\site-packages\Django-1.11.7-py2.7.egg\django\contrib\admin\static',
 )
 
