@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
     Index
 {% endblock %}
 
 {% block content %}
+{#    <img src="{% static 'gan.jpg' %}" alt="My img">#}
+    <img src="/app_static/gan3.jpg" alt="app_static">
+    <img src="/static/gan3.jpg" alt="static">
     <ul>
     {% for column in columns %}
         <li>

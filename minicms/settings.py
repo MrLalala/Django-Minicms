@@ -122,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 # 基本上URL和ROOT要同时出现，一个指定连接，一个指定路径
+# STATIC_URL = '/app_static'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
