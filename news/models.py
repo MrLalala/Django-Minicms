@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from DjangoUeditor.models import UEditorField
 
 
 @python_2_unicode_compatible
@@ -35,7 +36,9 @@ class Article(models.Model):
     slug = models.CharField('网址', max_length=256, db_index=True)
 
     author = models.ForeignKey('auth.User', blank=True, null=True, verbose_name='作者')
-    content = models.TextField('内容', default='', blank=True)
+    content = UEditorField('内容', height=300, width=1000,
+                           default=u'', blank=True, imagePath='uploads/images/',
+                           toolbars='besttome', filePath='upload/files/')
 
     published = models.BooleanField('正式发布', default=True)
     pub_date = models.DateTimeField('发表时间', auto_now_add=True, editable=True)

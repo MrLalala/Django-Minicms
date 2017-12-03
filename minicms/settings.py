@@ -1,3 +1,4 @@
+# coding:utf-8
 """
 Django settings for minicms project.
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news',
+    'DjangoUeditor',
 ]
 
 MIDDLEWARE = [
@@ -119,4 +121,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+# 基本上URL和ROOT要同时出现，一个指定连接，一个指定路径
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 添加静态文件的路径，如js和css等。
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'common_static'),
+)
+

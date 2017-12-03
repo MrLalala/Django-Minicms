@@ -1,2 +1,5 @@
 *.pyc
 .idea
+media
+common_static
+static
