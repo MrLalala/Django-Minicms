@@ -1,3 +1,4 @@
+# coding:utf-8
 """minicms URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,11 +17,16 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from DjangoUeditor import urls as editor_urls
+from news import views as news_views
 from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ueditor/', include(editor_urls)),
+    url(r'^$', news_views.index, name='index'),
+    # 使用非通用匹配url，就是按文章单独分配url
+    url(r'^column/(?P<column_slug>[^/]+)/$', news_views.column_detail, name='column'),
+    url(r'^news/(?P<article_slug>[^/]+)/$', news_views.article_detail, name='article'),
 ]
 
 if settings.DEBUG:

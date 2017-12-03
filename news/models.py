@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from DjangoUeditor.models import UEditorField
+from django.core.urlresolvers import reverse
 
 
 @python_2_unicode_compatible
@@ -15,6 +16,9 @@ class Column(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('column', args=(self.slug, ))
 
     class Meta:
         # 貌似就是看起来更方便的东西。
@@ -30,6 +34,7 @@ class Column(models.Model):
 class Article(models.Model):
     # 在一对一、多对多、外键等关系中，verbose_name这一选项可选。。
     # 事实是：加不加verbose_name对数据层面没有影响。
+    # 添加verbose_name会将类型变成该名字。
     column = models.ManyToManyField(Column, verbose_name='归属栏目')
 
     title = models.CharField('标题', max_length=256)
@@ -46,6 +51,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    # 获得绝对地址的方式
+    def get_absolute_url(self):
+        return reverse('article', args=(self.slug, ))
 
     class Meta:
         verbose_name = '教程'

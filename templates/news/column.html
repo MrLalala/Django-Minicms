@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ column.title }}
+{% endblock %}
+{% block content %}
+    <p>Title:{{ column.name }}</p>
+    栏目简介：{{ column.intro }}
+    <ul>
+        {#通过.article_set.all来获取属于该栏目的所有文章#}
+    {% for article in column.article_set.all %}
+    <li>
+        <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+    </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+<h1>标题：{{ article.title }}</h1>
+    <div id='content-main'>
+        {{ article.content }}
+    </div>
+{% endblock %}
