@@ -1,15 +1,15 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base_bootstrap.html' %}
 {% block title %}
     Index
 {% endblock %}
 
 {% block content %}
 {#    <img src="{% static 'gan.jpg' %}" alt="My img">#}
-    <img src="/app_static/gan3.jpg" alt="app_static">
-    <img src="/static/gan3.jpg" alt="static">
+{#    <img src="/app_static/gan3.jpg" alt="app_static">#}
+{#    <img src="/static/gan3.jpg" alt="static">#}
+{#    <img src="/static/gan5.jpg" alt="ll">#}
     <ul>
-    {% for column in columns %}
+    {% for column in home_display_columns %}
         <li>
             <a href="{{ column.get_absolute_url }}">{{ column.name }}</a>
         </li>

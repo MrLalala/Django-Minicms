@@ -1,18 +1,61 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}欢迎光临{% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{#    使用本地Bootstrap#}
+{#    注意顺序：css第一，jquery第二，bootstrap.js第三，最后两个应该放在最后。#}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </script>
     {% block css %}
     {% endblock %}
     {% block js %}
     {% endblock %}
 </head>
 <body>
-{% block content %}
-<h1 align="center">this is a Header</h1><br>
-{% endblock %}
+    <nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="">My New</a>
+	</div>
+	<div>
+		<ul class="nav navbar-nav">
+			{% for column in nav_display_columns %}
+			    <li class="active"><a href="{{ column.get_absolute_url }}">{{ column.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	</div>
+</nav>
+    <div class="row clearfix">
+        <div>
+            {% block content %}
+                <h1>Gan News Site</h1>
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row clearfix" style="padding-top: 20px;">
+        <div>
+            <div class="well well-sm">
+                <div style="text-align:center">
+                    <a href="">免责声明</a> &nbsp;
+                    <a href="">关于我们</a>
+                </div>
+                <div align="center">
+                    这是一个简单的页面
+                    没什么技术含量 <br>
+                    全部依靠 <a href="https://code.ziqiangxuetang.com/django/">自强学院</a>
+                    这是个好网站
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="{% static 'bootstrap/js/jquery-3.1.1.min.js'%}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </html>
